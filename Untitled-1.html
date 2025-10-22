@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hyperthatical Ventures — Strategic Product Demos</title>
+  <meta name="description" content="Hyperthatical Ventures — demo website showcasing data-driven product strategy, product design, and growth marketing. Mobile-first, accessible, and SEO-optimized single-file demo.">
+  <meta name="keywords" content="product demo, growth marketing, UX design, demo site, Hyperthatical">
+  <link rel="canonical" href="https://example.com/" />
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Hyperthatical Ventures — Strategic Product Demos">
+  <meta property="og:description" content="A mobile-first demo site to showcase product & growth strategy, UX, and portfolio work.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://example.com/">
+  <meta property="og:image" content="https://example.com/hero-social.png">
+
+  <!-- Structured Data: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Hyperthatical Ventures",
+    "url": "https://example.com/",
+    "logo": "https://example.com/logo.png",
+    "sameAs": ["https://twitter.com/example","https://www.linkedin.com/company/example"]
+  }
+  </script>
+
+  <style>
+  :root{
+    --bg:#0f1724;
+    --card:#0b1220;
+    --muted:#9aa4b2;
+    --accent1: 210 100% 60%; /* HSL for easier theme tweaks */
+    --accent2: 290 85% 55%;
+    --glass: rgba(255,255,255,0.04);
+    --radius:14px;
+    --maxwidth:1100px;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;background:linear-gradient(180deg,#071022 0%,#08121b 60%);color:#e6eef6}
+  a{color: hsl(var(--accent1)); text-decoration: none}
+  header{position:sticky;top:0;background:linear-gradient(180deg, rgba(2,6,23,0.6), rgba(2,6,23,0.35));backdrop-filter: blur(4px);border-bottom:1px solid rgba(255,255,255,0.03)}
+  .container{max-width:var(--maxwidth);margin:0 auto;padding:24px}
+
+  /* Nav (mobile-first, checkbox toggle) */
+  .nav-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,hsl(var(--accent1)), hsl(var(--accent2)));display:flex;align-items:center;justify-content:center;font-weight:700}
+  nav{display:flex;align-items:center;gap:18px}
+  .cta{padding:10px 14px;border-radius:10px;background:linear-gradient(90deg, hsl(var(--accent1)), hsl(var(--accent2)));color:#041021;font-weight:700}
+  .menu-toggle{display:flex;align-items:center;gap:8px}
+  input[type=checkbox]{display:none}
+  .hamburger{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:var(--glass);cursor:pointer}
+  .nav-list{position:absolute;left:0;right:0;top:72px;padding:18px;display:none;background:linear-gradient(180deg, rgba(2,6,23,0.95), rgba(2,6,23,0.98));border-top:1px solid rgba(255,255,255,0.02)}
+  input[type=checkbox]:checked + .hamburger + .nav-list{display:block}
+  .nav-list a{display:block;padding:12px 0;border-bottom:1px dashed rgba(255,255,255,0.02)}
+
+  /* Hero */
+  .hero{padding:56px 16px;text-align:left}
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:28px;align-items:center}
+  .eyebrow{display:inline-block;padding:6px 10px;background:linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));border-radius:999px;font-weight:600;color:var(--muted);font-size:13px}
+  h1{font-size:clamp(28px, 5vw, 44px);margin:10px 0 6px;line-height:1.02}
+  p.lead{color:var(--muted);max-width:60ch}
+  .hero-visual{min-height:220px;border-radius:18px;background:linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));display:flex;align-items:center;justify-content:center;padding:18px}
+
+  /* Animated mock device */
+  .device{width:100%;max-width:360px;border-radius:14px;padding:18px;background:linear-gradient(180deg,#021226, #041026);box-shadow:0 8px 30px rgba(3,7,18,0.6);position:relative}
+  .mock-screen{width:100%;height:420px;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#071428,#041022);display:flex;flex-direction:column}
+  .mock-header{height:44px;display:flex;align-items:center;gap:8px;padding:10px;color:var(--muted)}
+  .mock-list{flex:1;padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .tile{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:10px;border-radius:10px}
+
+  /* Features */
+  .features{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .feature{background:var(--card);padding:18px;border-radius:12px}
+
+  /* Portfolio grid */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .portfolio-item{background:linear-gradient(180deg,#061122,#041020);padding:12px;border-radius:12px}
+
+  /* Testimonials carousel (pure CSS) */
+  .testimonials{overflow:hidden;border-radius:12px}
+  .t-wrap{display:flex;gap:12px;width:300%;animation:slide 18s linear infinite}
+  .t{flex:1 0 33.333%;padding:18px;background:linear-gradient(180deg,#071022,#041019);border-radius:12px}
+  @keyframes slide{0%{transform:translateX(0)}33%{transform:translateX(0)}44%{transform:translateX(-33.333%)}77%{transform:translateX(-33.333%)}88%{transform:translateX(-66.666%)}100%{transform:translateX(-66.666%)}}
+
+  /* Contact */
+  form{display:grid;gap:10px}
+  input,textarea{padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+  button.primary{padding:12px;border-radius:10px;border:none;background:linear-gradient(90deg,hsl(var(--accent1)),hsl(var(--accent2)));font-weight:700}
+
+  /* Footer */
+  footer{padding:28px 16px;color:var(--muted)}
+
+  /* Responsive */
+  @media(min-width:820px){
+    .hero-grid{grid-template-columns:1fr 420px}
+    .nav-list{position:static;display:block;background:transparent;padding:0;border-top:none}
+    .hamburger{display:none}
+    nav{gap:24px}
+    .nav-row{align-items:center}
+    .features{grid-template-columns:repeat(3,1fr)}
+    .grid{grid-template-columns:repeat(3,1fr)}
+  }
+  @media(max-width:819px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .portfolio-item{min-height:110px}
+  }
+
+  /* Micro-animations */
+  .pulse{animation:pulse 2.6s infinite}
+  @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.02)}100%{transform:scale(1)}}
+  .fade-up{animation:fadeUp 900ms ease both}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+  </style>
+</head>
+<body>
+  <header aria-label="Site header">
+    <div class="container nav-row" role="navigation">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">HV</div>
+        <div>
+          <div style="font-weight:700">Hyperthatical Ventures</div>
+          <div style="font-size:12px;color:var(--muted)">product strategy · design · growth</div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:12px">
+        <nav class="nav-inline" aria-label="primary">
+          <a href="#services">Services</a>
+          <a href="#work">Work</a>
+          <a href="#about">About</a>
+          <a href="#contact" class="cta">Book a demo</a>
+        </nav>
+
+        <div class="menu-toggle">
+          <input id="navcheck" type="checkbox" aria-hidden="true">
+          <label class="hamburger" for="navcheck" aria-hidden="true">
+            <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="18" height="2" rx="1" fill="white" opacity="0.9"></rect><rect y="5" width="18" height="2" rx="1" fill="white" opacity="0.9"></rect><rect y="10" width="18" height="2" rx="1" fill="white" opacity="0.9"></rect></svg>
+          </label>
+          <div class="nav-list" role="menu" aria-hidden="false">
+            <a href="#services">Services</a>
+            <a href="#work">Work</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">Demo • Mobile-first • SEO-ready</span>
+          <h1 class="fade-up">Designing product demos that close deals and shorten sales cycles.</h1>
+          <p class="lead">We craft fast, focused proofs-of-value — from landing pages to interactive pitch visuals — that help clients evaluate product potential in minutes. This single-file demo is fully responsive, accessible, and optimized for search engines.</p>
+
+          <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="cta" href="#contact">Schedule a demo</a>
+            <a href="#work" style="padding:10px 14px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);">See work</a>
+          </div>
+
+          <div style="margin-top:20px;color:var(--muted);font-size:13px">Trusted by teams doing product-led growth, early-stage VCs, and corporate innovation labs.</div>
+        </div>
+
+        <div class="hero-visual pulse" aria-hidden="true">
+          <div class="device">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;color:var(--muted);font-size:13px">
+              <div>Live Preview</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.35)">v1.0</div>
+            </div>
+            <div class="mock-screen">
+              <div class="mock-header">
+                <div style="width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,0.12)"></div>
+                <div style="flex:1"></div>
+                <div style="font-size:12px;color:var(--muted)">Analytics</div>
+              </div>
+              <div class="mock-list">
+                <div class="tile">Revenue</div>
+                <div class="tile">Conversion</div>
+                <div class="tile">Active Users</div>
+                <div class="tile">Churn</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="container fade-up" style="padding-top:8px">
+      <h2 style="margin-bottom:8px">What we do</h2>
+      <div class="features">
+        <div class="feature">
+          <h3 style="margin:0 0 8px">Rapid Prototyping</h3>
+          <p style="margin:0;color:var(--muted)">Clickable mockups, pitch-ready flows, and validated landing pages — delivered as demoable artifacts.</p>
+        </div>
+        <div class="feature">
+          <h3 style="margin:0 0 8px">Go-to-Market Experiments</h3>
+          <p style="margin:0;color:var(--muted)">Design experiments that prove demand before you build — A/B tests, funnels, and measurement plans.</p>
+        </div>
+        <div class="feature">
+          <h3 style="margin:0 0 8px">Growth Playbooks</h3>
+          <p style="margin:0;color:var(--muted)">Playbooks that combine creative messaging with acquisition channels to scale efficiently.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="container" style="margin-top:28px">
+      <h2 style="margin-bottom:12px">Selected demo pieces</h2>
+      <div class="grid">
+        <div class="portfolio-item">
+          <h4 style="margin:0 0 6px">Onboarding funnel</h4>
+          <p style="margin:0;color:var(--muted);font-size:13px">330% lift in activation in controlled demo.</p>
+        </div>
+        <div class="portfolio-item">
+          <h4 style="margin:0 0 6px">Landing A/B</h4>
+          <p style="margin:0;color:var(--muted);font-size:13px">Instant split-test with wireframe variants.</p>
+        </div>
+        <div class="portfolio-item">
+          <h4 style="margin:0 0 6px">Pitch visual</h4>
+          <p style="margin:0;color:var(--muted);font-size:13px">Investor-facing KPI dashboard mock.</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top:28px" class="container">
+      <h2>What clients say</h2>
+      <div class="testimonials" style="margin-top:12px">
+        <div class="t-wrap">
+          <div class="t"><strong>Jane C., Head of Ops</strong><p style="color:var(--muted)">"Delivered a demo we could show to partners in 48 hours; closed two pilots."</p></div>
+          <div class="t"><strong>Samir K., Founder</strong><p style="color:var(--muted)">"Clear storytelling — helped our pitch resonate with product and sales."</p></div>
+          <div class="t"><strong>Leah M., PM</strong><p style="color:var(--muted)">"The KPI mock saved us months of engineering time — decision made fast."</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="container" style="margin-top:28px">
+      <h2>Book a demo</h2>
+      <p style="color:var(--muted)">Send a short brief and we'll prepare a targeted demo for your use case.</p>
+      <form action="#" onsubmit="return false" aria-label="Contact form">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="company" placeholder="Company (optional)">
+        <textarea name="brief" rows="4" placeholder="One-sentence brief of your need"></textarea>
+        <button class="primary" type="submit">Request demo</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div style="min-width:200px">
+        <div style="font-weight:700">Hyperthatical Ventures</div>
+        <div style="font-size:13px;color:var(--muted)">Made for demos, not bureaucracy.</div>
+      </div>
+      <div style="color:var(--muted);font-size:13px">© <span id="year"></span> Hyperthatical Ventures — Built for conversion.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Minimal progressive enhancement: set current year and accessibility hint
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Add a small skip link for keyboard users (enhancement)
+    const skip = document.createElement('a');
+    skip.href = '#main'; skip.style.position='absolute'; skip.style.left='-9999px'; skip.textContent='Skip to content';
+    document.body.insertBefore(skip, document.body.firstChild);
+  </script>
+</body>
+</html>
